@@ -11,7 +11,7 @@ const Header=(props)=>{
             <img src={logo} onClick={()=>{
                     console.log('props:-' + JSON.stringify(props));
 
-                // props.history.push('/')
+                props.history.push('/')
             }}></img>
             <h1>Expense Manager Tool</h1>
             <p></p>
