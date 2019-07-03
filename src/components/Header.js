@@ -1,16 +1,24 @@
-
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import './../../styles/components/header.css'
+import logo from './../../public/images/logo.png'
+import { connect } from 'react-redux';
 
-const Header = () => {
+
+
+const Header=(props)=>{
     return (
-        <div>
-            <h1> EXPENSIFY APP</h1>
-            <NavLink to='/' activeClassName='is-active' exact={true}>HOME PAGE</NavLink>
-            <NavLink to='/create' activeClassName='is-active'>CREATE PAGE</NavLink>
-            <NavLink to='/help' activeClassName='is-active'>HELP PAGE</NavLink>
+        <div className="header">
+            <img src={logo} onClick={()=>{
+                    console.log('props:-' + JSON.stringify(props));
+
+                // props.history.push('/')
+            }}></img>
+            <h1>Expense Manager Tool</h1>
+            <p></p>
         </div>
     )
 }
 
-export default Header;
+export default connect()(Header);
+
+

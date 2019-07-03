@@ -1,0 +1,80 @@
+.login {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: rgba(216, 63, 135, 0.6);
+}
+
+.login form {
+	margin: 25vh auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 500px;
+	height: 500px;
+	border: 1px solid black;
+	background: rgba(42, 27, 61, 0.6);
+	position: relative;
+}
+
+.login form input {
+	width: 30vw;
+	height: 6vh;
+	border-radius: 20px;
+	outline: none;
+	background: rgba(216, 63, 135, 0.6);
+	color: white;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+.uname {
+	position: absolute;
+
+	top: 20vh;
+}
+
+.uname:focus,
+.passwd:focus {
+	background: rgba(42, 27, 61, 0.6);
+}
+
+.passwd {
+	position: absolute;
+	top: 30vh;
+}
+
+.loginBtn {
+	position: absolute;
+	width: 15vw;
+	height: 5vh;
+	left: 11vw;
+	text-decoration: none;
+	outline: none;
+	top: 40vh;
+	border-radius: 20px;
+	background: rgba(216, 63, 135, 0.6);
+	color: white;
+}
+
+.login form input::placeholder {
+	color: white;
+	text-align: center;
+	font-size: 1.2rem;
+}
+
+.login form p {
+	color: white;
+	font-size: 25px;
+	width: 30vw;
+	position: absolute;
+	top: 5vh;
+}
+
+hr {
+	position: absolute;
+	top: 12vh;
+	width: 30vw;
+	height: 1px;
+	background: white;
+}

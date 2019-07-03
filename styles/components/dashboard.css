@@ -1,0 +1,6 @@
+.dashboard {
+	width: 100vw;
+	height: 100vh;
+    overflow: hidden;
+    background: rgba(42, 27, 61, 0.6);
+}
