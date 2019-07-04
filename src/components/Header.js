@@ -1,24 +1,35 @@
 import React from 'react';
 import './../../styles/components/header.css'
-import logo from './../../public/images/logo1.png'
-import { connect } from 'react-redux';
+import logo from './../../public/images/logo.png'
+import {withRouter} from 'react-router-dom'
+
 
 
 
 const Header=(props)=>{
     return (
-        <div className="header">
-            <img src={logo} onClick={()=>{
-                    console.log('props:-' + JSON.stringify(props));
+		<div>
+			<div className="header1">
+				<img
+					src={logo}
+					onClick={() => {
+						console.log('props:-' + JSON.stringify(props));
 
-                props.history.push('/')
-            }}></img>
-            <h1>Expense Manager Tool</h1>
-            <p></p>
-        </div>
-    )
+						props.history.push('/');
+					}}
+				/>
+			</div>
+			<div className="header2">
+				<h1>Expense Manager Tool</h1>
+				<div className="user">
+					<i class="fa-border fas fa-user" />
+					<span>Aryan Sharma</span>
+				</div>
+			</div>
+		</div>
+	);
 }
 
-export default connect()(Header);
+export default withRouter(Header);
 
 

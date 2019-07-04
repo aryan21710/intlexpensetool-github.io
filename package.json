@@ -4,7 +4,6 @@
   "description": "",
   "scripts": {
     "build": "webpack --watch",
-    "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
     "start": "nodemon server/server.js"
   },
