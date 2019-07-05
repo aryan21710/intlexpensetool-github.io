@@ -7,7 +7,9 @@
     "build:prod" : "webpack",
     "dev-server": "webpack-dev-server",
     "start": "node server/server.js",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod",
+    "startmon": "nodemon server/server.js"
+    
   },
   "repository": {
     "type": "git",

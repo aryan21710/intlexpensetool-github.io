@@ -2,7 +2,7 @@ const path=require('path')
 console.log(path.join(__dirname, 'src','app.js'));
 module.exports =(env)=>{
     return {
-		entry: path.join(__dirname, 'src', 'app.js'),
+		entry: path.join(__dirname, 'src',  'app.js'),
 		output: {
 			path: path.join(__dirname, 'public'),
 			filename: 'bundle.js',

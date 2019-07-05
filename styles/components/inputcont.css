@@ -12,12 +12,13 @@
 }
 
 .submitForm {
-    width: 80vw;
-      display: flex;
-      flex-direction: row;
-    /* justify-content: space-around; */
-    height: 70vh;
-	background: rgba(216, 63, 135, 0.8);
+    width: 100vw;
+    height: 89.5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+	background: rgba(0,0,0,0.5);
 }
 
 
@@ -30,7 +31,7 @@
 
 .currency {
      width: 30vw;
-         height: 70vh;
+        height: 70vh;
 
     display: flex;
     align-items: center;
@@ -53,22 +54,24 @@
 
 
 .forminputs textarea {
-    width: 40vw;
+    width: 50vw;
     height: 10vh;
-    margin-top: 15vh;
-    font-size: 1.2rem;
+    margin-top: 3vh;
+    font-size: 1rem;
     text-align: center;
 
 }
 
-.forminputs textarea::placeholder {
+.forminputs textarea::placeholder,
+.forminputs input::placeholder
+{
 	color: white;
 	text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: auto 0;
 }
 .forminputs textarea, .forminputs input, .forminputs button {
-	background: rgba(42, 27, 61, 0.6);
+	background: rgba(216, 63, 135, 0.8);
     border-radius: 20px; 
     color: white;
     text-decoration: none;
@@ -77,24 +80,20 @@
 
 
 
-#fileToUpload {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 5vh;
-    padding:10px;
-    text-align: center;
 
-}
 
 /* input[type="file"] {
     visibility: hidden;
 } */
-.forminputs input,#fileToUpload button {
+.forminputs input {
 
-    width: 20vw;
+    width: 50vw;
     text-align: center;
+    height: 5vh;
+    margin-top: 3vh;
 }
+
+
 
 
 
@@ -105,9 +104,9 @@
 }
 
 .submitClaimBtn {
-     margin-top: 5vh;
+     margin-top: 3vh;
 
-    width: 40vw;
+    width: 50vw;
     height: 5vh;
 }
 

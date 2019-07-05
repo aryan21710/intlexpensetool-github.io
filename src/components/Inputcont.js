@@ -2,6 +2,8 @@ import React from 'react';
 import './../../styles/components/inputcont.css';
 import currency from './../../public/images/currency.png'
 import './../../public/fonts/fontawesome-free-5.8.2-web/css/all.css';
+import FilesDemo from './InputFileComponent';
+
 
 export default class Inputcont extends React.Component {
 					constructor(props) {
@@ -11,8 +13,22 @@ export default class Inputcont extends React.Component {
 							attachreceipt: false,
 							onclickupload: '',
 							onclicksubmitclaim: false,
+							name: '',
+							email: '',
 						};
 					}
+
+					entername = e => {
+						this.setState({
+							name: e.target.value,
+						});
+					};
+
+					enteremail = e => {
+						this.setState({
+							email: e.target.value,
+						});
+					};
 
 					textentered = e => {
 						this.setState({
@@ -20,30 +36,35 @@ export default class Inputcont extends React.Component {
 						});
 					};
 
-					fileupload=(e)=>{
-						console.log('fileupload:-'+e.target.value);
-						(e.target.value.length > 0 && this.setState({
-							attachreceipt : true
-						}))
+					// fileupload = e => {
+					// 	console.log('fileupload:-' + e.target.value);
+					// 	e.target.value.length > 0 &&
+					// 		this.setState({
+					// 			attachreceipt: true,
+					// 		});
+					// };
 
-					}
-
-					receiptupload = () => {
-						this.state.attachreceipt ? 
-						alert('RECEIPT UPLOADED SUCCESSFULLY') :
-						alert('PLEASE UPLOAD A VALID RECEIPT')
-					};
+					// receiptupload = () => {
+					// 	this.state.attachreceipt
+					// 		? alert('RECEIPT UPLOADED SUCCESSFULLY')
+					// 		: alert('PLEASE UPLOAD A VALID RECEIPT');
+					// };
 
 					submitclaim = e => {
 						e.preventDefault();
-						if (this.state.text.length > 0) {
+						if (this.state.text.length > 0 && this.state.name.length > 0 && this.state.email.length > 0) {
 							alert('CLAIM SUBMITTED SUCCESSFULLY');
 							this.setState({
-								text: ''
-							})
-						
+								text: '',
+							});
+							this.setState({
+							  name: '',
+							});
+							this.setState({
+								email: '',
+							});
 						} else {
-							alert('CLAIM DESCRIPTION MISSING');
+							alert('PLEASE FILL ALL THE FIELDS');
 							this.onclicksubmitclaim = false;
 						}
 					};
@@ -56,32 +77,29 @@ export default class Inputcont extends React.Component {
 									// action=""
 									// method="post"
 									// enctype="multipart/form-data"
-									onSubmit={this.submitclaim}
+									// onSubmit={this.submitclaim}
 								>
 									<div class="currency" />
 
 									<div class="forminputs">
+										<input
+											value={this.state.name}
+											placeholder="Your Name"
+											onChange={this.entername}
+										/>
+										<input
+											type="email"
+											value={this.state.email}
+											placeholder="Your Email"
+											onChange={this.enteremail}
+										/>
 										<textarea
 											placeholder="Enter Your Claim"
 											onChange={this.textentered}
 											value={this.state.text}
 										/>
-										<div id="fileToUpload">
-											<input
-												type="file"
-												name="fileToUpload"
-												onChange={this.fileupload}
-												
-												
-											/>
-											<button onClick={this.receiptupload}>
-												Upload Receipt
-											</button>
-										</div>
-										<button
-											class="submitClaimBtn"
-											onClick={this.submitclaim}
-										>
+										<FilesDemo />
+										<button class="submitClaimBtn" onClick={this.submitclaim}>
 											Submit Claim
 										</button>
 									</div>
