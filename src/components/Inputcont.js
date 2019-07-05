@@ -8,16 +8,14 @@ export default class Inputcont extends React.Component {
 		return (
 			<div className="inputcont">
 				<form className="submitForm" action="" method="post" enctype="multipart/form-data">
-					<div class="currency">
-						<img src={currency} />
-					</div>
+					<div class="currency" />
 					<div class="forminputs">
 						<textarea placeholder="Enter Your Claim" />
 						<div id="fileToUpload">
 							<input type="file" name="fileToUpload" />
 							<input type="submit" value="Upload Receipt" name="submit" />
 						</div>
-						<button>Submit Claim</button>
+						<button class="submitClaimBtn">Submit Claim</button>
 					</div>
 				</form>
 			</div>

@@ -1,10 +1,10 @@
-import React from 'react';
+// import React from 'react';
 
-const HelpPage = () => {
-    return (
-        <p>Welcome to My HelpPage PAGE</p>
-    )
-}
+// const HelpPage = () => {
+//     return (
+//         <p>Welcome to My HelpPage PAGE</p>
+//     )
+// }
 
 
-export default HelpPage;
+// export default HelpPage;

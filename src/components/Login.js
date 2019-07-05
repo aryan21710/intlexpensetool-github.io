@@ -2,81 +2,104 @@ import React from 'react';
 import './../../styles/components/login.css';
 import axios from 'axios';
 import Header from './Header';
+import {connect} from 'react-redux';
+import {userlogin} from './../action/fileclaim'
 
-export default class Login extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			email: '',
-			passwd: '',
-			loginStatus: '',
-		};
-	}
+ class Login extends React.Component {
+					constructor(props) {
+						super(props);
+						this.state = {
+							email: '',
+							passwd: '',
+							loginStatus: '',
+						};
+					}
 
-	enterCredentials = e => {
-		console.log(`E.TARGET.NAME IS CHANGED:- ${e.target.name}`);
-		this.setState({
-			[e.target.name]: e.target.value,
-		});
-	};
+					enteruname = e => {
+						console.log(`E.TARGET.NAME IS CHANGED:- ${e.target.name}`);
+						this.setState({
+							email: e.target.value,
+						});
+					};
 
-	submitCredentials = e => {
-		e.preventDefault();
-		// axios
-		// 	.post(
-		// 		'http://localhost:3000/about',
-		// 		{
-		// 			user: {
-		// 				email: this.state.email,
-		// 				passwd: this.state.passwd,
-		// 			},
-		// 		},
+					enterpasswd = e => {
+						console.log(`E.TARGET.NAME IS CHANGED:- ${e.target.name}`);
+						this.setState({
+							passwd: e.target.value,
+						});
+					};
 
-		// 		{ withCredentials: true }
-		// 	)
-		// 	.then(res => {
-		// 		console.log('RESPONSE BACK FROM SERVER:-' + JSON.stringify(res));
-		// 	})
-		// 	.catch(error => {
-		// 		console.log('ERROR OCCURED:-' + error);
-		// 	});
-		this.setState({
-			loginStatus: 'Logged In',
-		});
-		console.log(JSON.stringify(this.props));
-		this.props.history.push('/dashboard')
-	};
+					submitCredentials = e => {
+						e.preventDefault();
+						// axios
+						// 	.post(
+						// 		'http://localhost:3000/about',
+						// 		{
+						// 			user: {
+						// 				email: this.state.email,
+						// 				passwd: this.state.passwd,
+						// 			},
+						// 		},
 
-	render() {
-		return (
-			<div className="main">
-				<div className="login">
-					<Header />
+						// 		{ withCredentials: true }
+						// 	)
+						// 	.then(res => {
+						// 		console.log('RESPONSE BACK FROM SERVER:-' + JSON.stringify(res));
+						// 	})
+						// 	.catch(error => {
+						// 		console.log('ERROR OCCURED:-' + error);
+						// 	});
+						if (this.state.email.length > 0 && this.state.passwd.length > 0) {
+							console.log('THIS.PROPS:-'+JSON.stringify(this.props));
+							this.setState({
+								loginStatus: 'Logged In',
+							});
+							this.props.dispatch(userlogin(
+								 this.state.email,
+								 this.state.passwd
+								// loginStatus: this.state.loginStatus
+							));
+							this.props.history.push('/dashboard');
+						} else {
+							alert('ENTER PROPER CREDENTIALS');
+						}
+						
+						console.log(JSON.stringify(this.props));
+						
+					};
 
-					<form onSubmit={this.submitCredentials}>
-						<p>Login</p>
-						<hr />
+					render() {
+						return (
+							<div className="main">
+								<div className="login">
+									<Header />
 
-						<input
-							className="uname"
-							placeholder="Enter Username"
-							type="email"
-							name="email"
-							value={this.state.email}
-							onChange={this.enterCredentials}
-						/>
-						<input
-							className="passwd"
-							placeholder="Enter Password"
-							type="password"
-							name="passwd"
-							value={this.state.passwd}
-							onChange={this.enterCredentials}
-						/>
-						<button className="loginBtn">Login</button>
-					</form>
-				</div>
-			</div>
-		);
-	}
-}
+									<form onSubmit={this.submitCredentials}>
+										<p>Login</p>
+										<hr />
+
+										<input
+											className="uname"
+											placeholder="Enter Username"
+											type="email"
+											name="email"
+											value={this.state.email}
+											onChange={this.enteruname}
+										/>
+										<input
+											className="passwd"
+											placeholder="Enter Password"
+											type="password"
+											name="passwd"
+											value={this.state.passwd}
+											onChange={this.enterpasswd}
+										/>
+										<button className="loginBtn">Login</button>
+									</form>
+								</div>
+							</div>
+						);
+					}
+				}
+
+export default connect()(Login);

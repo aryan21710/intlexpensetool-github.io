@@ -5,9 +5,6 @@ import {Provider} from 'react-redux';
 import store from './store/configStore';
 import './../styles/base/index.css';
 import 'normalize.css/normalize.css';
-import { addExpense, removeExpense, removeAllExpense } from './action/expenses';
-import getStateChanges from './selectors/getvisiblechanges'
-import {setTextFilter,setStartDate, sortByDate,sortByAmount} from './action/filters';
 
 
 
@@ -15,7 +12,7 @@ store.subscribe(()=>{
      const state = store.getState();
      console.log('LATEST STATE:-'+JSON.stringify(state,null,4));
 
-     const visibleChanges = getStateChanges(state.expense, state.filters);
+    //  const visibleChanges = getStateChanges(state.expense, state.filters);
 })
 
 const jsx=(

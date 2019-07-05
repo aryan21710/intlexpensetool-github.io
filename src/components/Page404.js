@@ -1,15 +1,15 @@
 
-import React from 'react';
-import {Link} from 'react-router-dom';
+// import React from 'react';
+// import {Link} from 'react-router-dom';
 
-const Page404 = () => {
-    return (
-        <div>
-            <span> PAGE NOT FOUND. 404 ERROR.</span>
-            <Link to='/'>GO BACK TO HOME PAGE</Link>
-        </div>
+// const Page404 = () => {
+//     return (
+//         <div>
+//             <span> PAGE NOT FOUND. 404 ERROR.</span>
+//             <Link to='/'>GO BACK TO HOME PAGE</Link>
+//         </div>
 
-    )
-}
+//     )
+// }
 
-export default Page404;
+// export default Page404;

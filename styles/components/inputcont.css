@@ -56,13 +56,16 @@
     width: 40vw;
     height: 10vh;
     margin-top: 15vh;
+    font-size: 1.2rem;
+    text-align: center;
 
 }
 
 .forminputs textarea::placeholder {
 	color: white;
 	text-align: center;
-	font-size: 1.2rem;
+    font-size: 1.2rem;
+    margin: auto 0;
 }
 .forminputs textarea, .forminputs input, .forminputs button {
 	background: rgba(42, 27, 61, 0.6);
@@ -71,6 +74,8 @@
     text-decoration: none;
     outline: none;
 }
+
+
 
 #fileToUpload {
     display: flex;
@@ -81,19 +86,32 @@
     text-align: center;
 
 }
+
+/* input[type="file"] {
+    visibility: hidden;
+} */
 .forminputs input {
- 
+
     width: 20vw;
+    text-align: center;
 }
 
-.forminputs button {
-       margin-top: 5vh;
+
+
+.selectFiletoUpld,.submitClaimBtn {
+
+    width: 20vw;
+    height: 5vh;
+}
+
+.submitClaimBtn {
+     margin-top: 5vh;
 
     width: 40vw;
-    padding: 10px;
-
-    
+    height: 5vh;
 }
+
+
 
 
 
