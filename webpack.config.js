@@ -1,5 +1,5 @@
 const path=require('path')
-console.log(path.join(__dirname, 'src', 'app.js'));
+console.log(path.join(__dirname, 'src','app.js'));
 module.exports =(env)=>{
     return {
 		entry: path.join(__dirname, 'src', 'app.js'),
@@ -17,7 +17,6 @@ module.exports =(env)=>{
 				{
 					test: /\.s?css$/,
 					use: ['style-loader', 'css-loader', 'sass-loader'],
-					
 				},
 				{
 					test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg|jpg)(\?[a-z0-9=.]+)?$/,

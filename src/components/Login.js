@@ -16,14 +16,14 @@ import {userlogin} from './../action/fileclaim'
 					}
 
 					enteruname = e => {
-						console.log(`E.TARGET.NAME IS CHANGED:- ${e.target.name}`);
+						// console.log(`E.TARGET.NAME IS CHANGED:- ${e.target.name}`);
 						this.setState({
 							email: e.target.value,
 						});
 					};
 
 					enterpasswd = e => {
-						console.log(`E.TARGET.NAME IS CHANGED:- ${e.target.name}`);
+						// console.log(`E.TARGET.NAME IS CHANGED:- ${e.target.name}`);
 						this.setState({
 							passwd: e.target.value,
 						});
@@ -50,7 +50,7 @@ import {userlogin} from './../action/fileclaim'
 						// 		console.log('ERROR OCCURED:-' + error);
 						// 	});
 						if (this.state.email.length > 0 && this.state.passwd.length > 0) {
-							console.log('THIS.PROPS:-'+JSON.stringify(this.props));
+							// console.log('THIS.PROPS:-'+JSON.stringify(this.props));
 							this.setState({
 								loginStatus: 'Logged In',
 							});
@@ -64,7 +64,7 @@ import {userlogin} from './../action/fileclaim'
 							alert('ENTER PROPER CREDENTIALS');
 						}
 						
-						console.log(JSON.stringify(this.props));
+						// console.log(JSON.stringify(this.props));
 						
 					};
 
