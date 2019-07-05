@@ -4,8 +4,10 @@
   "description": "",
   "scripts": {
     "build": "webpack --watch",
+    "build:prod" : "webpack",
     "dev-server": "webpack-dev-server",
-    "start": "nodemon server/server.js"
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build:prod"
   },
   "repository": {
     "type": "git",
