@@ -64,7 +64,7 @@ import {userlogin} from './../action/fileclaim'
 							})
 							.catch(error => {
 								console.log('ERROR OCCURED:-' + error);
-								alert('ENTER PROPER CREDENTIALS');
+								alert('USER DOES NOT EXIST. LOGIN WITH A VALID USER');
 							});
 						
 						
