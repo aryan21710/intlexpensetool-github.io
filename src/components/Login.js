@@ -45,24 +45,28 @@ import {userlogin} from './../action/fileclaim'
 							)
 							.then(res => {
 								console.log('RESPONSE BACK FROM SERVER:-' + JSON.stringify(res));
+								if (this.state.email.length > 0 && this.state.passwd.length > 0) {
+									// console.log('THIS.PROPS:-'+JSON.stringify(this.props));
+									this.setState({
+										loginStatus: 'Logged In',
+									});
+									this.props.dispatch(userlogin(
+										this.state.email,
+										this.state.passwd
+										// loginStatus: this.state.loginStatus
+									));
+									if (this.state.email.split('@')[0]==="admin") {
+										this.props.history.push('/admindashboard');
+										} else {
+										this.props.history.push('/dashboard');
+									}
+								}
 							})
 							.catch(error => {
 								console.log('ERROR OCCURED:-' + error);
+								alert('ENTER PROPER CREDENTIALS');
 							});
-						if (this.state.email.length > 0 && this.state.passwd.length > 0) {
-							// console.log('THIS.PROPS:-'+JSON.stringify(this.props));
-							this.setState({
-								loginStatus: 'Logged In',
-							});
-							this.props.dispatch(userlogin(
-								 this.state.email,
-								 this.state.passwd
-								// loginStatus: this.state.loginStatus
-							));
-							this.props.history.push('/dashboard');
-						} else {
-							alert('ENTER PROPER CREDENTIALS');
-						}
+						
 						
 						// console.log(JSON.stringify(this.props));
 						

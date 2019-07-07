@@ -20,16 +20,26 @@ console.log('PUBLICPATH:-' + publicPath);
 app.use(bodyParser.json());
 
 app.post('/login', (req, res) => {
+	const user = {
+		uname: req.body.user.email,
+		passwd: req.body.user.passwd
+	};
 	// console.log('req.body:-'+util.inspect(req));
-	console.log(` the username :- ${req.body.user.email} & passwd :- ${req.body.user.passwd}`);
-	res.status(200).send('LOGIN REQUEST REACHED THE SERVER SUCCESSFULLY');
+	console.log(` the username :- ${user.uname} & passwd :- ${user.passwd}`);
+	if (user.uname.split('@')[0]==="admin") {
+	res.status(200).send('admin user authenticated successfully by server');
+	} else if (user.uname.split('@')[0]==="aryan"){
+	res.status(200).send('aryan user authenticated successfully by server');
+	} else {
+		res.status(400).send('USER DOES NOT EXIST IN DB');
+	}
 });
 
 
 
-app.get('/', (req, res) => {
-	res.sendFile(path.join(publicPath, 'index.html'));
-});
+// app.get('/', (req, res) => {
+// 	res.sendFile(path.join(publicPath, 'inx.html'));
+// });
 
 app.get('/about', (req, res) => {
 	console.log('req:-' + JSON.stringify(req));
