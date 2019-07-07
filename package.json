@@ -4,12 +4,11 @@
   "description": "",
   "scripts": {
     "build": "webpack --watch",
-    "build:prod" : "webpack",
+    "build:prod": "webpack",
     "dev-server": "webpack-dev-server",
     "start": "node server/server.js",
     "heroku-postbuild": "npm run build:prod",
     "startmon": "nodemon server/server.js"
-    
   },
   "repository": {
     "type": "git",
@@ -36,6 +35,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "blob": "0.0.5",
+    "body-parser": "^1.19.0",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",

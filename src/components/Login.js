@@ -31,24 +31,24 @@ import {userlogin} from './../action/fileclaim'
 
 					submitCredentials = e => {
 						e.preventDefault();
-						// axios
-						// 	.post(
-						// 		'http://localhost:3000/about',
-						// 		{
-						// 			user: {
-						// 				email: this.state.email,
-						// 				passwd: this.state.passwd,
-						// 			},
-						// 		},
+						axios
+							.post(
+								'http://localhost:3000/login',
+								{
+									user: {
+										email: this.state.email,
+										passwd: this.state.passwd,
+									},
+								},
 
-						// 		{ withCredentials: true }
-						// 	)
-						// 	.then(res => {
-						// 		console.log('RESPONSE BACK FROM SERVER:-' + JSON.stringify(res));
-						// 	})
-						// 	.catch(error => {
-						// 		console.log('ERROR OCCURED:-' + error);
-						// 	});
+								{ withCredentials: true }
+							)
+							.then(res => {
+								console.log('RESPONSE BACK FROM SERVER:-' + JSON.stringify(res));
+							})
+							.catch(error => {
+								console.log('ERROR OCCURED:-' + error);
+							});
 						if (this.state.email.length > 0 && this.state.passwd.length > 0) {
 							// console.log('THIS.PROPS:-'+JSON.stringify(this.props));
 							this.setState({

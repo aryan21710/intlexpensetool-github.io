@@ -16,7 +16,6 @@ const Approutes = ()=>{
 				<Switch>
 					<Route path="/" component={Login} exact={true} />
 					<Route path="/dashboard" component={Dashboard} />
-
 					<Route component={Page404} />
 				</Switch>
 			</div>
