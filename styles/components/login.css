@@ -62,7 +62,7 @@
 	left: 25%;
 	text-decoration: none;
 	outline: none;
-	top: 42vh;
+	top: 40vh;
 	border-radius: 20px;
 	background: rgba(42, 27, 61, 0.6);
 	color: white;
@@ -85,7 +85,7 @@
 
 hr {
 	position: absolute;
-	top: 12vh;
+	top: 11vh;
 	width: 27vw;
 	height: 1px;
 	background: white;
