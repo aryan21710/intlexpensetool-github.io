@@ -1,42 +1,34 @@
-.header2,.header1,.header {
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100vw;
+.header {
+    display: grid;
+    grid-template-columns: 15vw 70vw 15vw;
     height: 10vh;
-    background: rgba(255,255,255,0.6);
+    position: absolute;
+    top:0vh;
+    left: 0vw;
+}
+
+.header2,.header1,.loggedinuser {
+   
+    background: rgba(255,255,255,0.8);
     display: flex;
-    flex-direction: row;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
-.header1 {
-   
-    width: 15vw;
-    height: 10vh;
-  
-}
-
-.header2 {
-    position: absolute;
-    top:0;
-    left:15.2vw;
-    width: 84.8vw;
-    height: 10vh;
-  
-}
 
 
-.header1 img, .header img {
+
+
+.header1 img {
     width: 150px;
     height: 50px;
-    position: absolute;
-    left: 2vh;
     cursor: pointer;
 }
 
+
 .header2 h1 {
-    margin-left: 25vw;
-    font-size: 1.5rem;
+  
+    cursor: pointer;
 }
+

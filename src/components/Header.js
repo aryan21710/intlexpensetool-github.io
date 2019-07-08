@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 const Header=(props)=>{
 	// console.log('props:-'+JSON.stringify(props));
     return (
-		<div>
+		<div className="header">
 			<div className="header1">
 				<img
 					src={logo}
@@ -19,12 +19,17 @@ const Header=(props)=>{
 			</div>
 			<div className="header2">
 				<h1>Expense Manager Tool</h1>
-				{props.variables.length > 0 && (
-					<div className="user">
-						<i class="fa-border fas fa-user" />
-						<span>{props.variables[0].split('@')[0].toUpperCase()}</span>
-					</div>
-				)}
+				
+			</div>
+
+			<div className="loggedinuser">
+			
+			{props.variables.length > 0 && (
+				<div className="user">
+					<i class="fa-border fas fa-user" />
+					<span>{props.variables[0].split('@')[0].toUpperCase()}</span>
+				</div>
+			)}
 			</div>
 		</div>
 	);

@@ -6,12 +6,13 @@ import Header from './../components/Header';
 import Login from './../components/Login'
 import Dashboard from './../components/Dashboard';
 import Admindashboard from './../components/Admindashboard'
+import './../../styles/base/index.css'
 
 
 const Approutes = ()=>{
     return (
 		<BrowserRouter>
-			<div>
+			<div className="main">
 				<Header />
 				<Switch>
 					<Route path="/" component={Login} exact={true} />

@@ -74,34 +74,31 @@ import {userlogin} from './../action/fileclaim'
 
 					render() {
 						return (
-							<div className="main">
 								<div className="login">
-									<Header />
-
 									<form onSubmit={this.submitCredentials}>
-										<p>Login</p>
-										<hr />
+									<p>Login</p>
+									<hr />
 
-										<input
-											className="uname"
-											placeholder="Enter Username"
-											type="email"
-											name="email"
-											value={this.state.email}
-											onChange={this.enteruname}
-										/>
-										<input
-											className="passwd"
-											placeholder="Enter Password"
-											type="password"
-											name="passwd"
-											value={this.state.passwd}
-											onChange={this.enterpasswd}
-										/>
-										<button className="loginBtn">Login</button>
-									</form>
+									<input
+										className="uname"
+										placeholder="Enter Username"
+										type="email"
+										name="email"
+										value={this.state.email}
+										onChange={this.enteruname}
+									/>
+									<input
+										className="passwd"
+										placeholder="Enter Password"
+										type="password"
+										name="passwd"
+										value={this.state.passwd}
+										onChange={this.enterpasswd}
+									/>
+									<button className="loginBtn">Login</button>
+								</form>
+
 								</div>
-							</div>
 						);
 					}
 				}
