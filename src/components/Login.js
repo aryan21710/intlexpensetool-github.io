@@ -33,7 +33,7 @@ import {userlogin} from './../action/fileclaim'
 						e.preventDefault();
 						axios
 							.post(
-								'http://localhost:3000/login',
+								'./login',
 								{
 									user: {
 										email: this.state.email,
