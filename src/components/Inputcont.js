@@ -55,12 +55,12 @@ export default class Inputcont extends React.Component {
 						}
 					}
 
-					
+
 
 					submitclaim = e => {
 						e.preventDefault();
 						if (this.state.text.length > 0 && this.state.name.length > 0 && this.state.email.length > 0) {
-							alert('CLAIM SUBMITTED SUCCESSFULLY');
+							alert('CLAIM SUBMITTED SUCCESSFULLY ');
 							this.setState({
 								text: '',
 							});

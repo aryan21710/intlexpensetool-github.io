@@ -57,6 +57,7 @@
 }
 
 .loginBtn {
+	
 	position: absolute;
 	width: 50%;
 	height: 5vh;
@@ -73,6 +74,7 @@
 	color: white;
 	text-align: center;
 	font-size: 1.2rem;
+	
 }
 
 .login form p {
