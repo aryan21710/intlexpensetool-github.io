@@ -44,19 +44,6 @@ export default class Inputcont extends React.Component {
 						});
 					};
 
-					// fileupload = e => {
-					// 	console.log('fileupload:-' + e.target.value);
-					// 	e.target.value.length > 0 &&
-					// 		this.setState({
-					// 			attachreceipt: true,
-					// 		});
-					// };
-
-					// receiptupload = () => {
-					// 	this.state.attachreceipt
-					// 		? alert('RECEIPT UPLOADED SUCCESSFULLY')
-					// 		: alert('PLEASE UPLOAD A VALID RECEIPT');
-					// };
 					inputamount=(value)=>{
 						console.log(isNaN(value));
 						if (isNaN(value)) {
