@@ -79,7 +79,9 @@
 }
 
 
-
+.nameInp {
+    margin-top: 3vh;
+}
 
 
 /* input[type="file"] {
@@ -90,7 +92,7 @@
     width: 50vw;
     text-align: center;
     height: 5vh;
-    margin-top: 3vh;
+    /* margin-top: 3vh; */
 }
 
 
