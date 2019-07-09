@@ -56,7 +56,7 @@ import {userlogin} from './../action/fileclaim'
 										// loginStatus: this.state.loginStatus
 									));
 									if (this.state.email.split('@')[0]==="admin") {
-										this.props.history.push('/admindashboard');
+										this.props.history.push('/expensestable');
 										} else {
 										this.props.history.push('/dashboard');
 									}

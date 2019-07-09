@@ -1,0 +1,19 @@
+.admindashboard {
+	width: 100vw;
+	height: 90vh;
+    overflow: hidden;
+    background: rgba(42, 27, 61, 0.6);
+
+    display: grid;
+    grid-template-rows: 4vh 86vh;
+    position: absolute;
+    top:10vh;
+    left: 0vw;
+}
+
+.admindashboard h1 {
+    color: white;
+    margin: 25%;
+}
+
+

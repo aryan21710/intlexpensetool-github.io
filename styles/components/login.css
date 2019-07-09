@@ -43,7 +43,7 @@
 .uname {
 	position: absolute;
 
-	top: 20vh;
+	top: 18vh;
 }
 
 .uname:focus,
@@ -53,7 +53,7 @@
 
 .passwd {
 	position: absolute;
-	top: 30vh;
+	top: 28vh;
 }
 
 .loginBtn {
@@ -64,7 +64,7 @@
 	left: 25%;
 	text-decoration: none;
 	outline: none;
-	top: 40vh;
+	top: 38vh;
 	border-radius: 20px;
 	background: rgba(42, 27, 61, 0.6);
 	color: white;

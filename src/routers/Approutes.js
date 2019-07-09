@@ -5,7 +5,8 @@ import Page404 from '../components/Page404';
 import Header from './../components/Header';
 import Login from './../components/Login'
 import Dashboard from './../components/Dashboard';
-import Admindashboard from './../components/Admindashboard'
+import Adminsummarytable from './../components/Adminsummarytable'
+import Adminexpensestable from './../components/Adminexpensestable'
 import './../../styles/base/index.css'
 
 
@@ -17,7 +18,8 @@ const Approutes = ()=>{
 				<Switch>
 					<Route path="/" component={Login} exact={true} />
 					<Route path="/dashboard" component={Dashboard} />
-					<Route path="/admindashboard" component={Admindashboard} />
+					<Route path="/expensestable" component={Adminexpensestable} />
+					<Route path="/summarytable" component={Adminsummarytable} />
 
 					<Route component={Page404} />
 				</Switch>
