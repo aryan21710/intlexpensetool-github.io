@@ -15,12 +15,15 @@ export const submitclaim =
     return {
 		type: 'SUBMIT_CLAIM',
 		variables: {
+			name,
 			email,
 			passwd,
 			text,
 			attachreceipt,
 			onclickupload,
 			onclicksubmitclaim,
+			createdAt,
+			amount
 		},
 	};
 }
