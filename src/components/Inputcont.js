@@ -7,7 +7,6 @@ import { SingleDatePicker } from 'react-dates';
 import './../../styles/components/react-dates.css';
 import 'react-dates/initialize';
 import moment from 'moment';
-import InputNumber from 'rc-input-number';
 
 export default class Inputcont extends React.Component {
 	constructor(props) {
@@ -58,16 +57,13 @@ export default class Inputcont extends React.Component {
 		});
 	};
 
-	inputamount = value => {
-		console.log(isNaN(value));
-		if (isNaN(value)) {
-			alert('PLEASE ENTER A VALID AMOUNT IN INR');
-		} else {
+	inputamount = e => {
+	
 			this.setState({
-				amount: value,
+				amount: e.target.value,
 			});
-		}
-	};
+	}
+	
 
 	submitclaim = e => {
 		e.preventDefault();
@@ -75,13 +71,11 @@ export default class Inputcont extends React.Component {
 		if (
 			this.state.text.length > 0 &&
 			this.state.name.length > 0 &&
-			this.state.email.length > 0 
+			this.state.email.length > 0 && 
+			this.state.amount > 0
 		) 
 		{
-			if (this.state.email.match(/^([a-zA-Z0-9]+)(@)+([a-zA-Z0-9]+)(\.com)$/g) == null) {
-				alert('ENTER A VALID EMAIL ID');
-				this.onclicksubmitclaim = false;
-			} else {
+		
 				alert('CLAIM SUBMITTED SUCCESSFULLY ');
 				this.setState({
 					text: '',
@@ -92,9 +86,9 @@ export default class Inputcont extends React.Component {
 				this.setState({
 					email: '',
 				});
-			} 
+			
 	    } else {
-			alert('PLEASE FILL ALL THE FIELDS');
+			alert('PLEASE FILL ALL THE FIELDS AND AMOUNT SHOULD BE MORE THAN 0');
 			this.onclicksubmitclaim = false;
 		}
 
@@ -149,12 +143,16 @@ export default class Inputcont extends React.Component {
 							isOutsideRange={() => false}
 						/>
 
-						<InputNumber
-							style={{ width: '50vw', marginTop: '3vh' }}
-							placeholder={'Enter Amount in INR'}
-							onChange={this.inputamount}
-							value={this.state.amount}
+						<input 
+						type="number" 
+						name="amount" 
+						min="1"
+						style={{ width: '50vw', marginTop: '3vh' }}
+						placeholder={'Enter Amount in INR'}
+						onChange={this.inputamount}
+						value={this.state.amount}
 						/>
+				
 
 						<FilesDemo />
 						<button class="submitClaimBtn" onClick={this.submitclaim}>
