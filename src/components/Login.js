@@ -50,11 +50,10 @@ import {userlogin} from './../action/fileclaim'
 									this.setState({
 										loginStatus: 'Logged In',
 									});
-									this.props.dispatch(userlogin(
-										this.state.email,
-										this.state.passwd
-										// loginStatus: this.state.loginStatus
-									));
+									// this.props.dispatch(userlogin({
+									// 	email:this.state.email,
+									// 	passwd:this.state.passwd
+									// }));
 									if (this.state.email.split('@')[0]==="admin") {
 										this.props.history.push('/expensestable');
 										} else {

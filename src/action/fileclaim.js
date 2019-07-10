@@ -1,30 +1,20 @@
 
 
-export const userlogin = (email,passwd) => {
+export const userlogin = (logininfo) => {
 	// console.log('USERLOGIN ACTION:-'+this.email+':'+this.passwd);
 	return ({
 			type: 'USER_LOGIN',
-			email,
-			passwd,	
+			logininfo
+			
+		
 		});
 	}
 
-export const submitclaim = 
-({email='',passwd='',text='',attachreceipt=false,onclickupload=false,onclicksubmitclaim=false}={}) => {
-    console.log('id:-' + id);
+export const submitclaim = (variables) => {
+    console.log('PROPS REACHED THE ACTION FILE:-'+JSON.stringify(variables))
     return {
 		type: 'SUBMIT_CLAIM',
-		variables: {
-			name,
-			email,
-			passwd,
-			text,
-			attachreceipt,
-			onclickupload,
-			onclicksubmitclaim,
-			createdAt,
-			amount
-		},
+		variables
 	};
 }
 

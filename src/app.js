@@ -11,6 +11,8 @@ import 'normalize.css/normalize.css';
 store.subscribe(()=>{
      const state = store.getState();
      console.log('LATEST STATE:-'+JSON.stringify(state,null,4));
+     localStorage.setItem('data',JSON.stringify(state.variables));
+     console.log(localStorage.getItem('data'))
 
     //  const visibleChanges = getStateChanges(state.expense, state.filters);
 })

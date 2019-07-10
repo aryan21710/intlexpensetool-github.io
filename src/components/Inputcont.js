@@ -7,8 +7,10 @@ import { SingleDatePicker } from 'react-dates';
 import './../../styles/components/react-dates.css';
 import 'react-dates/initialize';
 import moment from 'moment';
+import {submitclaim} from './../action/fileclaim'
+import {connect} from 'react-redux';
 
-export default class Inputcont extends React.Component {
+class Inputcont extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -77,6 +79,16 @@ export default class Inputcont extends React.Component {
 		{
 		
 				alert('CLAIM SUBMITTED SUCCESSFULLY ');
+				console.log('PROPS:-'+JSON.stringify(this.props))
+				
+				this.props.dispatch(submitclaim({
+					text: this.state.text,
+					name: this.state.name,
+					email:  this.state.email,
+					amount: this.state.amount,
+					createdAt: this.state.createdAt.format('LL')
+
+				}))
 				this.setState({
 					text: '',
 				});
@@ -164,3 +176,5 @@ export default class Inputcont extends React.Component {
 		);
 	}
 }
+
+export default connect()(Inputcont)

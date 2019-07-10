@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 
 const Header=(props)=>{
-	// console.log('props:-'+JSON.stringify(props));
+	console.log('props:-'+JSON.stringify(props.variables));
     return (
 		<div className="header">
 			<div className="header1">
