@@ -114,13 +114,7 @@ class Inputcont extends React.Component {
 	render() {
 		return (
 			<div className="inputcont">
-				<form
-					className="submitForm"
-					// action=""
-					// method="post"
-					// enctype="multipart/form-data"
-					// onSubmit={this.submitclaim}
-				>
+				<div className="submitForm">
 					<div class="currency" />
 
 					<div class="forminputs">
@@ -170,12 +164,12 @@ class Inputcont extends React.Component {
 						/>
 				
 
-						<FilesDemo />
+						<FilesDemo receiptstatus={this.state.attachreceipt}/>
 						<button class="submitClaimBtn" onClick={this.submitclaim}>
 							Submit Claim
 						</button>
 					</div>
-				</form>
+				</div>
 			</div>
 		);
 	}

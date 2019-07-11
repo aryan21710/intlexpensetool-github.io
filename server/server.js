@@ -44,9 +44,9 @@ app.post('/login', (req, res) => {
 
 
 
-app.get('/about', (req, res) => {
-	console.log('req:-' + JSON.stringify(req));
-	res.send('WELCOME TO ABOUT PAGE');
+app.post('/files', (req, res) => {
+	console.log('req:-' + JSON.stringify(req.body));
+	res.send('FILES UPLOADED TO SERVER');
 });
 
 

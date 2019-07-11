@@ -4,6 +4,7 @@ import Files from 'react-files';
 import Blob from 'blob';
 import FormData from 'form-data';
 import './../../styles/components/InputFileComponent.css';
+import axios from 'axios'
 
 
 
@@ -36,16 +37,26 @@ export default class FilesDemo extends React.Component {
     this.refs.files.removeFiles()
   }
 
-  filesUpload = () => {
-    const formData = new FormData()
+  filesUpload = (e) => {
+	  e.preventDefault();
+	const formData = new FormData();
+	console.log('THIS.STATE.FILE='+JSON.stringify(this.state.files))
     Object.keys(this.state.files).forEach((key) => {
       const file = this.state.files[key]
       formData.append(key, new Blob([file], { type: file.type }), file.name || 'file')
-    })
+	})
+	
+	console.log('FORMDATA:-'+JSON.stringify(formData))
+	if (Object.keys(this.state.files).length > 0) {
+		axios.post('/files', formData)
+		.then((response) => {
+			window.alert(`${this.state.files.length} files uploaded succesfully!`)
+		})
+		.catch(err => window.alert('Error uploading files :('))
+	} else {
+		alert('PLEASE SELECT THE FILE TO UPLOAD FIRST')
+	}
 
-    // axios.post(`/files`, formData)
-    // .then(response => window.alert(`${this.state.files.length} files uploaded succesfully!`))
-    // .catch(err => window.alert('Error uploading files :('))
   }
 
   render () {

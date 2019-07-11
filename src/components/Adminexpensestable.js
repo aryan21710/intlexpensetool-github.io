@@ -59,14 +59,6 @@ export default class Adminexpensetable extends React.Component {
           })
            
           console.log('data :-'+JSON.stringify(this.state.data))
-        //   data= {
-        //     empname: 'nasndsmn',
-        //     date: 'fmf',
-        //     expensedescription: 'dmmdfnfd',
-        //     amountininr: 'dmdfmds',
-        //     amountinus: 'dndnfdmfn',
-        //     receiptsandattachment: 'dfnfndsmnfd',
-        // }
       })
       .catch(error => {
           console.log('ERROR OCCURED:-' + error);
