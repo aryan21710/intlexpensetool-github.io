@@ -176,11 +176,21 @@
 }
 
 .ReactTable .rt-tbody .rt-td:nth-child(even) {
-    background: rgba(255,255,255,0.6)
+	background: rgba(255,255,255,0.7);
+	color: black;
+	text-align: center;
+	font-weight: bold;
+	font-family: Helvetica, sans-serif
 }
 
 .ReactTable .rt-tbody .rt-td:nth-child(odd) {
-    background: rgba(128,128,128,0.6)
+	background: rgba(128,128,128,0.7);
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-family: Helvetica, sans-serif
+
+
 }
 
 

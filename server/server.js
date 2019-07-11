@@ -3,11 +3,18 @@ const publicPath = path.join(__dirname,'..');
 const port = process.env.PORT || 3000;
 const util=require('util');
 
+
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose=require('mongoose');
+const empdata=require('./mongoinit')
+
+mongoose.Promise=global.Promise;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/EMPDATA', { useNewUrlParser: true });
 const app = express();
 app.use(express.static(publicPath));
 console.log('PUBLICPATH:-' + publicPath);
+
 
 
 // THE BODY DATA WHICH IS SENT BY CLIENT USING REQUEST OBJ WILL BE FETCHED BY BODYPARSER IN JSON FORMAT.
@@ -37,15 +44,47 @@ app.post('/login', (req, res) => {
 
 
 
-// app.get('/', (req, res) => {
-// 	res.sendFile(path.join(publicPath, 'inx.html'));
-// });
-
 app.get('/about', (req, res) => {
 	console.log('req:-' + JSON.stringify(req));
 	res.send('WELCOME TO ABOUT PAGE');
 });
 
+
+app.post('/getdata', (req, res) => {
+	console.log('req:-' + util.inspect(req.body.empData));
+
+	const mydata=new empdata (
+		{
+			empname: req.body.empData.name,
+			date:  req.body.empData.createdAt,
+			expensedescription:  req.body.empData.text,
+			amountininr:  req.body.empData.amount,
+			amountinus:  req.body.empData.amount/70,
+			receiptsandattachment:  'NOT ATTACHED'
+		}
+	)
+	mydata.save().then((doc)=>{
+		console.log('DOCUMENT SAVED:-'+JSON.stringify(doc))
+		res.status(200).send('DATA SAVED ON MONGO SERVER');
+
+	}).catch((err)=>{
+		console.log('ERROR OCCURED WHILE SAVING:-'+err)
+	})
+});
+
+app.get('/getdata', (req, res) => {
+	console.log('REQUEST FROM ADMIN REACT COMPONENT RECEIVED TO FETCH DATA');
+	const mydata=new empdata()
+	empdata.find({}).then((doc)=>{
+		console.log('FOUND DOCUMENT IN DB USING FIND METHOD  :-'+JSON.stringify(doc))
+		res.status(200).send(JSON.stringify(doc));
+
+	}).catch((err)=>{
+		console.log('NOT ABLE TO FETCH DOCUMENT FROM DB:-'+err)
+
+	})
+
+});
 
 
 

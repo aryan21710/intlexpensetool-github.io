@@ -77,7 +77,10 @@ class Inputcont extends React.Component {
 			this.state.amount > 0
 		) 
 		{
-		
+			if (this.state.email.match(/^([a-zA-Z0-9]+)(@)+([a-zA-Z0-9]+)(\.com)$/g) == null) {
+				alert('ENTER A VALID EMAIL ID');
+			} else {
+				console.log('A VALID EMAIL ID');
 				alert('CLAIM SUBMITTED SUCCESSFULLY ');
 				console.log('PROPS:-'+JSON.stringify(this.props))
 				
@@ -98,6 +101,7 @@ class Inputcont extends React.Component {
 				this.setState({
 					email: '',
 				});
+			}
 			
 	    } else {
 			alert('PLEASE FILL ALL THE FIELDS AND AMOUNT SHOULD BE MORE THAN 0');

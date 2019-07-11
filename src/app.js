@@ -5,16 +5,15 @@ import {Provider} from 'react-redux';
 import store from './store/configStore';
 import './../styles/base/index.css';
 import 'normalize.css/normalize.css';
+import postDataToServer from './selectors/postDataToServer'
 
 
 
 store.subscribe(()=>{
      const state = store.getState();
      console.log('LATEST STATE:-'+JSON.stringify(state,null,4));
-     localStorage.setItem('data',JSON.stringify(state.variables));
-     console.log(localStorage.getItem('data'))
+     postDataToServer(state.variables)
 
-    //  const visibleChanges = getStateChanges(state.expense, state.filters);
 })
 
 const jsx=(
