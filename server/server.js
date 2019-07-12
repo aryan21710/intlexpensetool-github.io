@@ -2,6 +2,10 @@ const path = require('path');
 const publicPath = path.join(__dirname,'..');
 const port = process.env.PORT || 3000;
 const util=require('util');
+const cors = require('cors');
+const multer = require('multer')
+const fs=require('fs')
+
 
 
 const express = require('express');
@@ -13,6 +17,7 @@ mongoose.Promise=global.Promise;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/EMPDATA', { useNewUrlParser: true });
 const app = express();
 app.use(express.static(publicPath));
+app.use(cors())
 console.log('PUBLICPATH:-' + publicPath);
 
 
@@ -25,6 +30,19 @@ console.log('PUBLICPATH:-' + publicPath);
 // information you want is contained in the body.Using body parser allows you to access req.body 
 // from within your routes, and use that data for example to create a user in a database.
 app.use(bodyParser.json());
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' +file.originalname )
+    }
+  })
+
+  var upload = multer({ storage: storage }).array('file')
+  let receiptsandattachment=''
+
 
 app.post('/login', (req, res) => {
 	const user = {
@@ -44,10 +62,6 @@ app.post('/login', (req, res) => {
 
 
 
-app.post('/files', (req, res) => {
-	console.log('req:-' + JSON.stringify(req.body));
-	res.send('FILES UPLOADED TO SERVER');
-});
 
 
 app.post('/getdata', (req, res) => {
@@ -59,8 +73,9 @@ app.post('/getdata', (req, res) => {
 			date:  req.body.empData.createdAt,
 			expensedescription:  req.body.empData.text,
 			amountininr:  req.body.empData.amount,
-			amountinus:  req.body.empData.amount/70,
-			receiptsandattachment:  'NOT ATTACHED'
+			amountinus:  (req.body.empData.amount/70).toFixed(2),
+			receiptlocation: 'Click to View the Receipt',
+			// receiptsandattachment:  receiptsandattachment
 		}
 	)
 	mydata.save().then((doc)=>{
@@ -74,6 +89,7 @@ app.post('/getdata', (req, res) => {
 
 app.get('/getdata', (req, res) => {
 	console.log('REQUEST FROM ADMIN REACT COMPONENT RECEIVED TO FETCH DATA');
+
 	const mydata=new empdata()
 	empdata.find({}).then((doc)=>{
 		console.log('FOUND DOCUMENT IN DB USING FIND METHOD  :-'+JSON.stringify(doc))
@@ -85,6 +101,49 @@ app.get('/getdata', (req, res) => {
 	})
 
 });
+
+app.get('/getreceipt', (req, res) => {
+	console.log('REQUEST FROM ADMIN REACT COMPONENT RECEIVED TO FETCH RECEIPT');
+	console.log('http://'+publicPath+'/dummy.png')
+	res.redirect('/dummy.png');
+
+
+});
+
+app.get('/about', (req, res) => {
+	res.send('about.html');
+
+
+});
+
+app.post('/upload',function(req, res) {
+    
+    upload(req, res, function (err) {
+     
+        if (err instanceof multer.MulterError) {
+            return res.status(500).json(err)
+          // A Multer error occurred when uploading.
+        } else if (err) {
+            return res.status(500).json(err)
+          // An unknown error occurred when uploading.
+		} 
+		console.log('FILE ON SERVER:-'+util.inspect(req.files));
+		// var img = fs.readFileSync(req.files[0].path);
+		// var encode_image = img.toString('base64');
+		// // Define a JSONobject for the image attributes for saving to database
+		 
+		// receiptsandattachment = {
+		// 	 contentType: req.files[0].mimetype,
+		// 	 data:  new Buffer(encode_image, 'base64')
+		//   };
+
+	
+        return res.status(200).send(req.files)
+        // Everything went fine.
+      })
+});
+
+
 
 
 

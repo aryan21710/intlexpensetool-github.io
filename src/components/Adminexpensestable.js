@@ -20,24 +20,30 @@ export default class Adminexpensetable extends React.Component {
         {
           Header: 'Emp Name',
           accessor: 'empname', // String-based value accessors!
+
         },
         {
           Header: 'Date',
           accessor: 'date',
+
         },
         {
           Header: 'Expense Description',
           accessor: 'expensedescription',
-              },
+          width:  600,
+
+          },
               {
           Header: 'Amount in INR',
           accessor: 'amountininr',
         },{
           Header: 'Amount in USD',
           accessor: 'amountinus',
+
         },{
-          Header: 'Receipts and Attachment',
-          accessor: 'receiptsandattachment',
+          Header: 'Receipt Link',
+          accessor: 'receiptlocation',
+
         },
         ];
     }
@@ -88,6 +94,47 @@ export default class Adminexpensetable extends React.Component {
                 desc: true,
               },
             ]}
+            getTdProps={(state, rowInfo, column, instance) => {
+              return {
+                onClick: (e, handleOriginal) => {
+                 
+                  // console.log('A Td Element was clicked!')
+                  // console.log('it produced this event:', e)
+                  // console.log('It was in this column:', column[''])
+                  // console.log('It was in this row:', rowInfo)
+                  // console.log('It was in this table instance:', instance)
+           
+                  // IMPORTANT! React-Table uses onClick internally to trigger
+                  // events like expanding SubComponents and pivots.
+                  // By default a custom 'onClick' handler will override this functionality.
+                  // If you want to fire the original onClick handler, call the
+                  // 'handleOriginal' function.
+                  if (handleOriginal) {
+                    if (column['Header']=='Receipt Link') {
+                      axios
+                      .get(
+                          './getreceipt',
+                        
+                          { withCredentials: true }
+                      )
+                      .then(res => {
+                          console.log('RECEIPT DATA BACK FROM SERVER:-' + JSON.stringify(res.data));
+                         
+                           
+                      })
+                      .catch(error => {
+                          console.log('ERROR OCCURED:-' + error);
+                          alert('FAILED TO FETCH RECEIPT FROM SERVER');
+                      });
+                      handleOriginal();
+                      
+
+                    }
+
+                  }
+                }
+              }
+            }}
           />
     
         </div>

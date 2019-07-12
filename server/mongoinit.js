@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const empSchema = new Schema({
     empname:String,
-    receiptsandattachment:String,
+    receiptlocation : String,
+    // receiptsandattachment:{contentType: String, data: Buffer},
     date:String,
     amountininr:Number,
     amountinus:Number,
