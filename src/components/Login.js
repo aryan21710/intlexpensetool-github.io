@@ -1,7 +1,6 @@
 import React from 'react';
 import './../../styles/components/login.css';
 import axios from 'axios';
-import Header from './Header';
 import {connect} from 'react-redux';
 import {userlogin} from './../action/fileclaim'
 
@@ -50,10 +49,10 @@ import {userlogin} from './../action/fileclaim'
 									this.setState({
 										loginStatus: 'Logged In',
 									});
-									// this.props.dispatch(userlogin({
-									// 	email:this.state.email,
-									// 	passwd:this.state.passwd
-									// }));
+									this.props.dispatch(userlogin({
+										email:this.state.email,
+										passwd:this.state.passwd
+									}));
 									if (this.state.email.split('@')[0]==="admin") {
 										this.props.history.push('/expensestable');
 										} else {

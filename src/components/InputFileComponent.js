@@ -1,11 +1,10 @@
 import React from 'react';
 import FormData from 'form-data';
-import './../../styles/components/InputFileComponent.css';
 import axios from 'axios'
 
 import {Progress} from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import './../../styles/components/reacttostify.css';
 
 
 
@@ -25,7 +24,7 @@ export default class FilesDemo extends React.Component {
 		//define message container
 		let err = []
 		// list allow mime type
-	   const types = ['image/png', 'image/jpeg', 'image/gif']
+	   const types = ['image/png', 'image/jpeg', 'image/gif',  'image/jpg', 'image/doc']
 		// loop access array
 		for(var x = 0; x<files.length; x++) {
 		 // compare file type find doesn't matach
@@ -79,23 +78,29 @@ export default class FilesDemo extends React.Component {
 	}
 	  onClickHandler = () => {
 		const data = new FormData() 
-		for(var x = 0; x<this.state.selectedFile.length; x++) {
-		  data.append('file', this.state.selectedFile[x])
+		if (this.state.selectedFile) {
+			for(var x = 0; x<this.state.selectedFile.length; x++) {
+				data.append('file', this.state.selectedFile[x])
+			  }
+			  axios.post("/upload", data, {
+				onUploadProgress: ProgressEvent => {
+				  this.setState({
+					loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
+				  })
+				},
+			  })
+				.then(res => { // then print response status
+				  toast.success('upload success')
+				})
+				.catch(err => { // then print response status
+				  toast.error('upload fail')
+				})
+			  
+		} else {
+			alert('PLEASE CHOOSE A FILE TO UPLOAD FIRST.')
 		}
-		axios.post("/upload", data, {
-		  onUploadProgress: ProgressEvent => {
-			this.setState({
-			  loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
-			})
-		  },
-		})
-		  .then(res => { // then print response status
-			toast.success('upload success')
-		  })
-		  .catch(err => { // then print response status
-			toast.error('upload fail')
-		  })
-		}
+	  }
+	
 	
 	  render() {
 		return (
@@ -103,16 +108,24 @@ export default class FilesDemo extends React.Component {
 			  <div class="row">
 				<div class="offset-md-3 col-md-6">
 				   <div class="form-group files">
-					<label>Upload Your File </label>
-					<input type="file" class="form-control" multiple onChange={this.onChangeHandler}/>
+					<label></label>
+					<input placeholder={'Choose Files to Upload'} 
+					style={{paddingTop: "55px" ,
+					marginTop: "10vh",
+					 boxSizing: "border-box",
+					 background: "url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat rgba(216, 63, 135, 0.8)",
+					 backgroundSize: "60px 60px"
+
+					}}
+					type="file" class="form-control" multiple onChange={this.onChangeHandler}/>
 				  </div>  
 				  <div class="form-group">
 				  <ToastContainer />
-				  <Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>
+				  <Progress style={{display:"none"}}max="100" color="white" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>
 			
 				  </div> 
 				  
-				  <button type="button" class="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
+				  <button type="button" class="uploadbtn btn btn-success" onClick={this.onClickHandler}>Upload Receipt</button>
 	
 			  </div>
 		  </div>

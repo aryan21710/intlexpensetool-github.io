@@ -5,7 +5,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 
 const Header=(props)=>{
-	console.log('props:-'+JSON.stringify(props.variables));
+	console.log('props in header component:-'+JSON.stringify(props.variables));
     return (
 		<div className="header">
 			<div className="header1">
@@ -24,10 +24,10 @@ const Header=(props)=>{
 
 			<div className="loggedinuser">
 			
-			{props.variables.length > 0 && (
+			{props.variables.email.length > 0 && (
 				<div className="user">
 					<i class="fa-border fas fa-user" />
-					<span>{props.variables[0].split('@')[0].toUpperCase()}</span>
+					<span>{props.variables.email.split('@')[0].toUpperCase()}</span>
 				</div>
 			)}
 			</div>

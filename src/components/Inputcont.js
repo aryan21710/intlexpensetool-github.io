@@ -115,7 +115,7 @@ class Inputcont extends React.Component {
 		return (
 			<div className="inputcont">
 				<div className="submitForm">
-					<div class="currency" />
+				
 
 					<div class="forminputs">
 						<input
@@ -133,8 +133,8 @@ class Inputcont extends React.Component {
 							onBlur={this.validateemail}
 						/>
 						<textarea
-							style={{ marginBottom: '3vh' }}
-							placeholder="Claim Description/Remarks"
+							
+							placeholder='Enter Claim Description'
 							onChange={this.textentered}
 							value={this.state.text}
 							class="nameInp"
@@ -157,7 +157,6 @@ class Inputcont extends React.Component {
 						type="number" 
 						name="amount" 
 						min="1"
-						style={{ width: '50vw', marginTop: '3vh' }}
 						placeholder={'Enter Amount in INR'}
 						onChange={this.inputamount}
 						value={this.state.amount}

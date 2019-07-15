@@ -5,10 +5,10 @@ import './../../styles/components/react-table.css'
 import Adminlinks from './Adminlinks'
 import './../../styles/components/adminlinks.css'
 import axios from 'axios'
-import { runInThisContext } from 'vm';
+import {connect} from 'react-redux';
 
 
-export default class Adminexpensetable extends React.Component {
+ class Adminexpensetable extends React.Component {
 
     constructor(props) {
       super (props) 
@@ -43,6 +43,8 @@ export default class Adminexpensetable extends React.Component {
         },{
           Header: 'Receipt Link',
           accessor: 'receiptlocation',
+          width:  600,
+
 
         },
         ];
@@ -68,7 +70,6 @@ export default class Adminexpensetable extends React.Component {
       })
       .catch(error => {
           console.log('ERROR OCCURED:-' + error);
-          alert('FAILED TO SAVE DATA ON MONGO SERVER');
       });
 
 
@@ -94,54 +95,57 @@ export default class Adminexpensetable extends React.Component {
                 desc: true,
               },
             ]}
-            getTdProps={(state, rowInfo, column, instance) => {
-              return {
-                onClick: (e, handleOriginal) => {
+            // getTdProps={(state, rowInfo, column, instance) => {
+            //   return {
+            //     onClick: (e, handleOriginal) => {
                  
-                  // console.log('A Td Element was clicked!')
-                  // console.log('it produced this event:', e)
-                  // console.log('It was in this column:', column[''])
-                  // console.log('It was in this row:', rowInfo)
-                  // console.log('It was in this table instance:', instance)
+            //       console.log('A Td Element was clicked!')
+            //       console.log('it produced this event:', e)
+            //       console.log('It was in this column:', column[''])
+            //       console.log('It was in this row:', rowInfo)
+            //       console.log('It was in this table instance:', instance)
            
-                  // IMPORTANT! React-Table uses onClick internally to trigger
-                  // events like expanding SubComponents and pivots.
-                  // By default a custom 'onClick' handler will override this functionality.
-                  // If you want to fire the original onClick handler, call the
-                  // 'handleOriginal' function.
-                  if (handleOriginal) {
-                    if (column['Header']=='Receipt Link') {
-                      axios
-                      .get(
-                          './getreceipt',
+            //       IMPORTANT! React-Table uses onClick internally to trigger
+            //       events like expanding SubComponents and pivots.
+            //       By default a custom 'onClick' handler will override this functionality.
+            //       If you want to fire the original onClick handler, call the
+            //       'handleOriginal' function.
+            //       if (handleOriginal) {
+            //         if (column['Header']=='Receipt Link') {
+            //           console.log('REDIRECT TO :-'+rowInfo.row.receiptlocation)
+            //           axios
+            //           .get(
+            //               './getreceipt',
                         
-                          { withCredentials: true }
-                      )
-                      .then(res => {
-                          console.log('RECEIPT DATA BACK FROM SERVER:-' + JSON.stringify(res.data));
-                         
+            //               { withCredentials: true }
+            //           )
+            //           .then(res => {
+            //               console.log('EMP CLAIM DATA BACK FROM SERVER:-' + JSON.stringify(res.data));
+            //               this.setState({
+            //                 data: this.state.data.concat(res.data)
+            //               })
                            
-                      })
-                      .catch(error => {
-                          console.log('ERROR OCCURED:-' + error);
-                          alert('FAILED TO FETCH RECEIPT FROM SERVER');
-                      });
-                      handleOriginal();
+            //               console.log('data :-'+JSON.stringify(this.state.data))
+            //           })
+            //           .catch(error => {
+            //               console.log('ERROR OCCURED:-' + error);
+            //               alert('FAILED TO SAVE DATA ON MONGO SERVER');
+            //           });                      handleOriginal();
                       
 
-                    }
+                    // }
 
-                  }
-                }
-              }
-            }}
+                  // }
+                // }
+              // }
+            // }}
           />
     
         </div>
       );
     }
-
-
-
- 
 };
+
+
+
+export default connect()(Adminexpensetable)

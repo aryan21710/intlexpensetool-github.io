@@ -12,6 +12,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose=require('mongoose');
 const empdata=require('./mongoinit')
+const moveFile = require('move-file');
+
 
 mongoose.Promise=global.Promise;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/EMPDATA', { useNewUrlParser: true });
@@ -19,7 +21,7 @@ const app = express();
 app.use(express.static(publicPath));
 app.use(cors())
 console.log('PUBLICPATH:-' + publicPath);
-
+let receiptFileName='';
 
 
 // THE BODY DATA WHICH IS SENT BY CLIENT USING REQUEST OBJ WILL BE FETCHED BY BODYPARSER IN JSON FORMAT.
@@ -74,8 +76,9 @@ app.post('/getdata', (req, res) => {
 			expensedescription:  req.body.empData.text,
 			amountininr:  req.body.empData.amount,
 			amountinus:  (req.body.empData.amount/70).toFixed(2),
-			receiptlocation: 'Click to View the Receipt',
-			// receiptsandattachment:  receiptsandattachment
+			receiptlocation: receiptFileName.length > 0 ? 
+			`http://localhost:8080/receipts/${receiptFileName}`:
+			'No Receipt Attached'
 		}
 	)
 	mydata.save().then((doc)=>{
@@ -104,15 +107,11 @@ app.get('/getdata', (req, res) => {
 
 app.get('/getreceipt', (req, res) => {
 	console.log('REQUEST FROM ADMIN REACT COMPONENT RECEIVED TO FETCH RECEIPT');
-	console.log('http://'+publicPath+'/dummy.png')
-	res.redirect('/dummy.png');
-
-
+	res.redirect('about.html')
 });
 
 app.get('/about', (req, res) => {
 	res.send('about.html');
-
 
 });
 
@@ -128,16 +127,14 @@ app.post('/upload',function(req, res) {
           // An unknown error occurred when uploading.
 		} 
 		console.log('FILE ON SERVER:-'+util.inspect(req.files));
-		// var img = fs.readFileSync(req.files[0].path);
-		// var encode_image = img.toString('base64');
-		// // Define a JSONobject for the image attributes for saving to database
-		 
-		// receiptsandattachment = {
-		// 	 contentType: req.files[0].mimetype,
-		// 	 data:  new Buffer(encode_image, 'base64')
-		//   };
-
-	
+		receiptFileName=req.files.length > 0 ?util.inspect(req.files[0]['filename']) : ''
+		receiptFileName=receiptFileName.replace(/['"]+/g,'')
+		console.log('receiptFileName:-'+receiptFileName);
+ 
+		(async () => {
+			await moveFile(`./public/${receiptFileName}`, `./public/receipts/${receiptFileName}`);
+			console.log('The file has been moved');
+		})();
         return res.status(200).send(req.files)
         // Everything went fine.
       })
