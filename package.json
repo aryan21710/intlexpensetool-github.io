@@ -21,7 +21,7 @@
   },
   "homepage": "",
   "dependencies": {
-    "acorn": "^6.2.0",
+    "acorn": "^6.4.1",
     "acorn-dynamic-import": "^4.0.0",
     "ajv": "^5.5.2",
     "autoprefixer": "^9.1.0",
