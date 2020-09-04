@@ -55,7 +55,7 @@
     "mongoose": "^5.6.4",
     "move-file": "^1.2.0",
     "multer": "^1.4.1",
-    "node-sass": "^4.9.2",
+    "node-sass": "^4.13.1",
     "normalize": "^0.3.1",
     "normalize.css": "^8.0.1",
     "postcss-loader": "^2.1.6",
